@@ -17,7 +17,7 @@ class SimulationPage extends StatefulWidget {
 
 class _SimulationPageState extends State<SimulationPage>{
 
-  int interval = 50;
+  int interval = 10;
 
   bool code1 = false;
   bool code2 = false;
@@ -178,6 +178,11 @@ class _SimulationPageState extends State<SimulationPage>{
               Expanded(child: Text("Misses: " + misses.toString(),style: textStyle,)),
               Expanded(child: Text("Total: " + total.toString(), style: textStyle,))
             ],),
+            Row(
+              children: [
+                Text("Ratio: "  + (hits.toDouble() / total.toDouble()).toString())
+              ],
+            ),
             Container(
               height: MediaQuery.of(context).size.height,
               child: ListView.builder(
@@ -219,11 +224,11 @@ class _SimulationPageState extends State<SimulationPage>{
       cache = true;
     });
 
-    //await pause();
+    await pause();
 
-    //await algo1();
+    await algo1();
 
-    //await Future.delayed(Duration(milliseconds: 2000));
+    await Future.delayed(Duration(milliseconds: 2000));
     setState(() {
       code1 = false;
       code2 = true;
@@ -234,12 +239,12 @@ class _SimulationPageState extends State<SimulationPage>{
       misses = 0;
       total = 0;
     });
-    //await Future.delayed(Duration(milliseconds: 2000));
+    await Future.delayed(Duration(milliseconds: 2000));
 
 
-    //await algo2();
+    await algo2();
 
-    //await Future.delayed(Duration(milliseconds: 2000));
+    await Future.delayed(Duration(milliseconds: 2000));
     setState(() {
       code2 = false;
       code3 = true;
@@ -250,7 +255,7 @@ class _SimulationPageState extends State<SimulationPage>{
       misses = 0;
       total = 0;
     });
-    //await Future.delayed(Duration(milliseconds: 2000));
+    await Future.delayed(Duration(milliseconds: 2000));
 
     await algo3();
 
